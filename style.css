@@ -1,0 +1,148 @@
+/* ========== RESET ========== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ========== PAGE ========== */
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: "Roboto", "Open Sans", Arial, sans-serif;
+    background-color: #ffffff;
+    color: #0f1419;
+    /* Makes the sidebar sit on the left like X */
+    display: flex;
+    align-items: flex-start;
+    min-height: 100vh;
+
+    overflow-x: hidden;
+}
+
+/* ========== LEFT COLUMN (banner-wrap) ========== */
+.banner-wrap {
+    width: 22.5rem;
+    height: 100vh; /* makes sidebar scroll within viewport */
+    border-right: 1px solid #eff3f4;
+    /* Keep sidebar visible when scrolling */
+    position: sticky;
+    top: 0;
+    /* Inner spacing like X */
+    padding: 0.75rem;
+    overflow-y: auto; /* better than scroll */
+    overflow-x: hidden;
+    scrollbar-gutter: stable;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ========== INNER SIDEBAR WRAPPER ========== */
+.sidebar {
+    /* DO NOT fix height here */
+    height: auto;
+    /* Twitter-style offset */
+    margin-left: 3.75rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ========== NAVBAR (logo area) ========== */
+.navbar {
+    margin-left: 3.75rem; /* align logo with menu */
+    padding: 0.25rem 0;
+}
+
+/* Logo button/pill */
+.logo {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+
+.logo:hover {
+    background: rgba(15, 20, 25, 0.08);
+}
+
+/* Your svg has class="logo-icon" */
+.logo-icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    fill: #0f1419;
+    display: block;
+}
+
+/* ========== NAV ITEMS ========== */
+.nav-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-top: 0.5rem;
+}
+
+/* Each row (your spans) */
+.sidebar-menu {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 999px;
+    width: fit-content;
+    cursor: pointer;
+    user-select: none;
+    font-size: 1.25rem;
+    line-height: 1;
+    color: #0f1419;
+}
+
+.sidebar-menu:hover {
+    background: rgba(15, 20, 25, 0.08);
+}
+
+/* Icons in menu */
+.sidebar-menu svg {
+    width: 1.75rem;
+    height: 1.75rem;
+    fill: #0f1419;
+    flex: 0 0 auto;
+    display: block;
+}
+
+/* Optional: make "Home" look active */
+.nav-items .sidebar-menu:first-child {
+    font-weight: 700;
+}
+
+/* ========== RESPONSIVE (collapse labels like X) ========== */
+@media (max-width: 70rem) {
+  .banner-wrap {
+    width: 5rem;
+    padding: 0.75rem 0.5rem;
+    align-items: center;
+  }
+
+  /* you used margin-left, so reset margin-left (not padding-left) */
+  .sidebar, .navbar {
+    margin-left: 0;
+  }
+
+  .nav-items {
+    align-items: center;
+  }
+
+  .sidebar-menu {
+    width: 3rem;
+    height: 3rem;
+    padding: 0.75rem;
+    justify-content: center;
+
+    /* hides the text without changing HTML */
+    font-size: 0;
+  }
+}
