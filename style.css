@@ -6,53 +6,58 @@
 }
 
 /* ========== PAGE ========== */
-html,
-body {
-    height: 100%;
-}
-
 body {
     font-family: "Roboto", "Open Sans", Arial, sans-serif;
     background-color: #ffffff;
     color: #0f1419;
-    /* Makes the sidebar sit on the left like X */
+    height: 100%;
+    /* sidebar sits on the left */
     display: flex;
     align-items: flex-start;
     min-height: 100vh;
-
     overflow-x: hidden;
+    overflow-y: auto; /* far-right scrollbar remains for body */
 }
 
 /* ========== LEFT COLUMN (banner-wrap) ========== */
 .banner-wrap {
     width: 22.5rem;
-    height: 100vh; /* makes sidebar scroll within viewport */
+    height: 100vh; /* sidebar scroll within viewport */
     border-right: 1px solid #eff3f4;
-    /* Keep sidebar visible when scrolling */
     position: sticky;
     top: 0;
-    /* Inner spacing like X */
     padding: 0.75rem;
-    overflow-y: auto; /* better than scroll */
+    overflow-y: auto; /* sidebar scrollbar on its own edge */
     overflow-x: hidden;
     scrollbar-gutter: stable;
     display: flex;
     flex-direction: column;
 }
 
+/* Optional: sidebar scrollbar styling (Chrome/Edge) */
+.banner-wrap::-webkit-scrollbar {
+    width: 10px;
+}
+.banner-wrap::-webkit-scrollbar-thumb {
+    background-color: rgba(15, 20, 25, 0.25);
+    border-radius: 999px;
+}
+.banner-wrap::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
 /* ========== INNER SIDEBAR WRAPPER ========== */
 .sidebar {
-    /* DO NOT fix height here */
-    height: auto;
-    /* Twitter-style offset */
-    margin-left: 3.75rem;
+    height: 100%;
     display: flex;
     flex-direction: column;
+    /* single offset so logo + menus + post + footer align */
+    margin-left: 3.75rem;
 }
 
 /* ========== NAVBAR (logo area) ========== */
 .navbar {
-    margin-left: 3.75rem; /* align logo with menu */
+    margin-left: 0.45rem; /* important: don't double-offset */
     padding: 0.25rem 0;
 }
 
@@ -119,30 +124,152 @@ body {
     font-weight: 700;
 }
 
+/* === POST BUTTON (X accurate, no transition) === */
+.div-btn {
+    margin-top: 1rem;
+}
+
+.post-btn {
+    width: 13.75rem;          /* Matches original X width */
+    height: 3.5rem;           /* Thick, pill-shaped button */
+
+    background-color: #0f1419;
+    color: #ffffff;
+
+    border: none;
+    border-radius: 9999px;    /* Perfect pill shape */
+
+    font-size: 1.1rem;
+    font-weight: 700;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+/* Hover, but NO transition */
+.post-btn:hover {
+    background-color: #272c30;   /* Hard hover tint like X */
+}
+/* ========== FOOTER PROFILE (requires your footer markup/classes) ========== */
+.sidebar-footer {
+    margin-top: 0.94rem; /* pushes to bottom */
+    padding: 0;
+    padding-bottom: 0.75rem;
+}
+
+/* Footer row */
+.profile-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0.75rem 0.75rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.profile-row:hover {
+  background-color: rgba(15, 20, 25, 0.08);
+}
+
+/* Left group: avatar + text (no gap, use margin-right) */
+.profile-left {
+  display: flex;
+  align-items: center;
+}
+
+.profile-left .profile {
+  margin-right: 0.75rem;
+}
+
+/* Avatar */
+.profile {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.profile img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+/* Text stack */
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.profile-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.profile-handle {
+  font-size: 0.85rem;
+  color: #536471;
+}
+
 /* ========== RESPONSIVE (collapse labels like X) ========== */
 @media (max-width: 70rem) {
   .banner-wrap {
     width: 5rem;
     padding: 0.75rem 0.5rem;
     align-items: center;
-  }
+    }
 
-  /* you used margin-left, so reset margin-left (not padding-left) */
-  .sidebar, .navbar {
+  .sidebar {
     margin-left: 0;
-  }
+    align-items: center;
+    }
 
   .nav-items {
     align-items: center;
-  }
+    }
 
   .sidebar-menu {
     width: 3rem;
     height: 3rem;
     padding: 0.75rem;
     justify-content: center;
-
     /* hides the text without changing HTML */
     font-size: 0;
-  }
+    }
+  .post-btn {
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 0;
+    border-radius: 999px;
+    padding: 0;
+    }
+    .post-btn::after {
+    content: "+";
+    color: #ffffff;
+    font-size: 1.7rem;
+    line-height: 1;
+    }
+
+  /* Footer collapses to avatar only */
+  .profile-text,
+  .profile-details,
+  .profile-more {
+    display: none;
+    }
+
+  .profile-avatar,
+  .profile img {
+    width: 48px;
+    height: 48px;
+    }
+
+  .profile-card {
+    justify-content: center;
+    padding: 0.5rem;
+    }
 }
