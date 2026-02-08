@@ -14,6 +14,10 @@ body {
     /* sidebar sits on the left */
     display: flex;
     align-items: flex-start;
+    /* Center the layout a bit and add small horizontal breathing room */
+    justify-content: center;
+    padding-inline: 0.75rem;
+    
     min-height: 100vh;
     overflow-x: hidden;
     overflow-y: auto; /* far-right scrollbar remains for body */
@@ -21,17 +25,18 @@ body {
 
 /* ========== LEFT COLUMN (banner-wrap) ========== */
 .banner-wrap {
-    width: 22.5rem;
-    height: 100vh; /* sidebar scroll within viewport */
-    border-right: 1px solid #eff3f4;
-    position: sticky;
-    top: 0;
-    padding: 0.75rem;
-    overflow-y: auto; /* sidebar scrollbar on its own edge */
-    overflow-x: hidden;
-    scrollbar-gutter: stable;
-    display: flex;
-    flex-direction: column;
+  width: 22.5rem;
+  flex: 0 0 22.5rem;
+  height: 100vh; /* sidebar scroll within viewport */
+  border-right: 1px solid #eff3f4;
+  position: sticky;
+  top: 0;
+  padding: 0.75rem;
+  overflow-y: auto; /* sidebar scrollbar on its own edge */
+  overflow-x: hidden;
+  scrollbar-gutter: stable;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Optional: sidebar scrollbar styling (Chrome/Edge) */
@@ -155,7 +160,7 @@ body {
 }
 /* ========== FOOTER PROFILE (requires your footer markup/classes) ========== */
 .sidebar-footer {
-    margin-top: 0.94rem; /* pushes to bottom */
+    margin-top: 2.5rem; /* pushes to bottom */
     padding: 0;
     padding-bottom: 0.75rem;
 }
@@ -216,60 +221,778 @@ body {
   color: #536471;
 }
 
-/* ========== RESPONSIVE (collapse labels like X) ========== */
-@media (max-width: 70rem) {
-  .banner-wrap {
-    width: 5rem;
-    padding: 0.75rem 0.5rem;
-    align-items: center;
-    }
+/* ================ Main Column =========== */
+.main-container {
 
-  .sidebar {
-    margin-left: 0;
-    align-items: center;
-    }
+  flex: 0 0 52%;
+  min-height: 100vh;
 
-  .nav-items {
-    align-items: center;
-    }
+  min-width: 30rem;
+  max-width: 37.375rem;
+  border-right: 1px solid #eff3f4;
+  display: flex;
+  flex-direction: column;
+}
 
-  .sidebar-menu {
-    width: 3rem;
-    height: 3rem;
-    padding: 0.75rem;
-    justify-content: center;
-    /* hides the text without changing HTML */
-    font-size: 0;
-    }
-  .post-btn {
-    width: 3.5rem;
-    height: 3.5rem;
-    font-size: 0;
-    border-radius: 999px;
-    padding: 0;
-    }
-    .post-btn::after {
-    content: "+";
-    color: #ffffff;
-    font-size: 1.7rem;
-    line-height: 1;
-    }
+/* Header bar at top of feed */
+.main-header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
 
-  /* Footer collapses to avatar only */
-  .profile-text,
-  .profile-details,
-  .profile-more {
-    display: none;
-    }
+  background-color: #ffffff;
+  border-bottom: 1px solid #eff3f4;
+  border-right: 1px solid #eff3f4;
 
-  .profile-avatar,
-  .profile img {
-    width: 48px;
-    height: 48px;
-    }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-  .profile-card {
-    justify-content: center;
-    padding: 0.5rem;
-    }
+  width: 100%;
+  height: 3.25rem;
+  padding: 0 1rem;
+}
+
+/* title text container (Home) */
+.main-header-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-header-icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  border: none;
+  border-radius: 999px;
+  background-color: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  padding: 0;
+}
+
+.main-header-icon:hover {
+  background-color: rgb(15, 20, 25, 0.08);
+}
+
+.main-header-icon .material-icons {
+  font-size: 1.6rem;
+  color: #0f1419;
+}
+
+
+/* ================== TWEET COMPOSER ================== */
+
+.tweet-composer {
+  display: flex;
+  border-bottom: 1px solid #eff3f4;
+  height: 9.5rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-right: 2px solid #eff3f4;
+}
+
+/* Left: avatar */
+.tweet-composer-left {
+  margin-right: 0.75rem;
+}
+
+.tweet-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.tweet-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Right side: input + footer */
+.tweet-composer-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* text area */
+.tweet-input {
+  width: 100%;
+  min-height: 3rem;
+
+  border: none;
+  resize: none;
+  outline: none;
+
+  font-family: inherit;
+  font-size: 1.1rem;
+  line-height: 1.4;
+
+  padding: 0.75rem 0 0.5rem 0;
+}
+
+.tweet-input::placeholder {
+  color: #5a6b77;
+}
+
+/* footer row: icons + button */
+.tweet-composer-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.25rem;
+}
+
+/* icon strip */
+.tweet-icons {
+  display: flex;
+  align-items: center;
+}
+
+/* icon buttons (works for svg icons) */
+.tweet-icons .tweet-icon-btn,
+.tweet-icons .tweet-icons-btn {
+  border: none;
+  background-color: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 999px;
+
+  padding: 0;
+  margin-right: 0.35rem;   /* spacing between icons */
+
+  cursor: pointer;
+}
+
+/* no extra margin after last icon */
+.tweet-icons .tweet-icon-btn:last-child,
+.tweet-icons .tweet-icons-btn:last-child {
+  margin-right: 0;
+}
+
+/* size + color for your SVG icons */
+.tweet-icons .tweet-icon-btn svg,
+.tweet-icons .tweet-icons-btn svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  display: block;
+  fill: #1d9bf0;
+}
+
+/* hover circle */
+.tweet-icons .tweet-icon-btn:hover,
+.tweet-icons .tweet-icons-btn:hover {
+  background-color: rgba(29, 155, 240, 0.1);
+}
+
+/* Tweet button in composer (blue pill) */
+.composer-tweet-btn {
+  min-width: 5rem;
+  height: 2.25rem;
+
+  padding: 0 1rem;
+  border-radius: 999px;
+  border: none;
+
+  background-color: #87898c;
+  color: #ffffff;
+
+  font-size: 0.95rem;
+  font-weight: 700;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+.composer-tweet-btn:hover {
+  background-color: rgb(15, 20, 25);
+}
+
+/* ======== TIMELINE / TWEET CARD =========== */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-right: 2px solid #eff3f4;
+}
+
+/* Whole tweet row */
+.tweet {
+  display: flex;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #eff3f4;
+  cursor: pointer;
+}
+
+/* subtle hover background on entire tweet */
+.tweet:hover {
+  background-color: #f7f9f9;
+}
+
+/* Avatar column */
+.tweet-avatar {
+  margin-right: 0.75rem;
+  text-decoration: none;
+}
+
+.tweet-avatar img {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  display: block;
+  object-fit: cover;
+}
+
+/* Right side */
+.tweet-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER: name/handle/time on left + icons on right */
+.tweet-header {
+  display: flex;
+  justify-content: space-between;   /* pushes more-icons to far right */
+  align-items: center;               /* vertical alignment */
+  width: 100%;
+}
+
+/* Left group: name + @handle + time */
+.tweet-header-left {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  min-width: 0;                      /* prevents overflow */
+}
+
+/* Name (bold) */
+.tweet-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-right: 0.3rem;
+  color: #0f1419;
+}
+
+/* Handle and time */
+.tweet-handle,
+.tweet-dot,
+.tweet-time {
+  font-size: 0.9rem;
+  color: #536471;
+  margin-right: 0.3rem;
+}
+
+/* ---------- MORE BUTTONS (right side) ---------- */
+
+.tweet-more {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: fit-content;
+}
+
+/* shared button styles */
+.tweet-explain-more-btn,
+.tweet-more-btn {
+  border: none;
+  background-color: transparent;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  margin-left: 0.25rem;
+}
+
+/* explain-more svg */
+.tweet-explain-more-btn svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  fill: #536471;
+}
+
+/* 3-dots icon */
+.tweet-more-btn .material-icons {
+  font-size: 1.4rem;
+  color: #536471;
+}
+
+/* Hover effect */
+.tweet-explain-more-btn:hover,
+.tweet-more-btn:hover {
+  background-color: rgba(15, 20, 25, 0.08);
+}
+
+/* Tweet text */
+.tweet-text {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #0f1419;
+  margin-top: 0.25rem;
+}
+
+/* ======= TWEET ACTIONS ROW (reply / retweet / like / share) ======= */
+
+.tweet-actions {
+  display: flex;
+  align-items: center;
+  /* spread the 4 buttons nicely */
+  justify-content: space-between;
+
+  margin-top: 0.35rem;
+  margin-bottom: 0.25rem;
+  max-width: 26rem;   /* keeps them near the text, like X */
+}
+
+/* Base button – neutral grey text, no boxes */
+.tweet-action {
+  display: inline-flex;
+  align-items: center;
+
+  border: none;
+  background: transparent;
+  padding: 0 0.35rem 0.15rem 0;
+
+  cursor: pointer;
+  color: #536471;          /* default icon/count colour */
+  font-size: 0.8rem;
+}
+
+/* Circle behind each icon */
+.tweet-action-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+
+  margin-right: 0.25rem;   /* spacing between icon + number */
+}
+
+/* SVG inside the icon wrapper */
+.tweet-action-icon svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  fill: currentColor;      /* takes colour from .tweet-action */
+}
+
+/* Count text */
+.tweet-action-count {
+  font-size: 0.8rem;
+}
+
+/* -------- Hover colours, like X -------- */
+
+/* Reply – blue */
+.tweet-action-reply:hover {
+  color: #1d9bf0;
+}
+.tweet-action-reply:hover .tweet-action-icon {
+  background-color: rgba(29, 155, 240, 0.1);
+}
+
+/* Retweet – green */
+.tweet-action-retweet:hover {
+  color: #00ba7c;
+}
+.tweet-action-retweet:hover .tweet-action-icon {
+  background-color: rgba(0, 186, 124, 0.1);
+}
+
+/* Like – pink/red */
+.tweet-action-like:hover {
+  color: #f91880;
+}
+.tweet-action-like:hover .tweet-action-icon {
+  background-color: rgba(249, 24, 128, 0.1);
+}
+
+/* Share – subtle grey/blue */
+.tweet-action-share:hover {
+  color: #1d9bf0;
+}
+.tweet-action-share:hover .tweet-action-icon {
+  background-color: rgba(29, 155, 240, 0.1);
+}
+
+/* Remove default focus outline if you like */
+.tweet-action:focus {
+  outline: none;
+}
+
+/* ===== RIGHT COLUMN WRAPPER ===== */
+.right-column {
+  flex: 0 0 21rem;
+  padding: 0.5rem 1rem 2rem 1rem;
+  align-self: flex-start;
+
+  min-width: 18rem;
+  max-width: 24rem;
+  /* 🔥 This is what makes it behave like Twitter */
+  position: sticky;
+  top: 0.5rem;
+}
+/* Sticky inner container */
+.right-inner {
+  position: sticky;
+  top: 0.5rem;                     /* <– DOT, not comma */
+}
+
+.right-column * {
+  max-width: 100%;
+}
+/* ===== SEARCH INPUT ===== */
+
+.search-wrapper {
+  padding: 0.25rem 0 0.75rem 0;
+}
+
+.search-input-container {
+  display: flex;
+  align-items: center;
+  background-color: #eff3f4;
+  border-radius: 999px;
+  padding: 0.4rem 1rem;
+}
+
+.search-input-container .material-icons {
+  font-size: 1.2rem;
+  color: #536471;
+  margin-right: 0.5rem;
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-family: inherit;
+  font-size: 0.95rem;
+  width: 100%;
+}
+
+/* ===== TRENDS CARD ===== */
+
+.trends-card {
+  background-color: #f7f9f9;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.trends-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+}
+
+.trends-card-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+/* settings button */
+.trends-settings-btn {
+  border: none;
+  background-color: transparent;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.trends-settings-btn .material-icons {
+  font-size: 1.3rem;
+  color: #536471;
+}
+
+.trends-settings-btn:hover {
+  background-color: rgba(15, 20, 25, 0.08);
+}
+
+/* each trend row */
+
+.trend-item {
+  padding: 0.7rem 1rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.trend-item:hover {
+  background-color: #eff3f4;
+}
+
+.trend-item-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.trend-item-meta {
+  font-size: 0.8rem;
+  color: #536471;
+  margin-bottom: 0.15rem;
+}
+
+.trend-item-hashtag {
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 0.1rem;
+}
+
+.trend-item-tweets {
+  font-size: 0.8rem;
+  color: #536471;
+}
+
+/* … menu button on each trend */
+
+.trend-item-more {
+  border: none;
+  background-color: transparent;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.trend-item-more .material-icons {
+  font-size: 1.3rem;
+  color: #536471;
+}
+
+.trend-item-more:hover {
+  background-color: rgba(15, 20, 25, 0.08);
+}
+
+/* footer of trends card */
+
+.trends-card-footer {
+  padding: 0.75rem 1rem 0.9rem 1rem;
+}
+
+.trends-show-more {
+  border: none;
+  background-color: transparent;
+  color: #1d9bf0;
+  font-size: 0.9rem;
+  font-weight: 400;
+  padding: 0;
+  cursor: pointer;
+}
+
+.trends-show-more:hover {
+  text-decoration: underline;
+}
+
+/* ===== WHO TO FOLLOW CARD ===== */
+
+.follow-card {
+  background-color: #f7f9f9;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
+
+.follow-card-header {
+  padding: 0.75rem 1rem 0.5rem 1rem;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.follow-user {
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.follow-user:hover {
+  background-color: #eff3f4;
+}
+
+.follow-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-right: 0.75rem;
+}
+
+.follow-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.follow-info {
+  display: flex;
+  flex-direction: column;
+  margin-right: 0.75rem;
+}
+
+.follow-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0f1419;
+}
+
+.follow-handle {
+  font-size: 0.85rem;
+  color: #536471;
+}
+
+.follow-button {
+  border: none;
+  background-color: #0f1419;
+  color: #ffffff;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.3rem 0.9rem;
+  cursor: pointer;
+}
+
+/* ===== RIGHT FOOTER LINKS ===== */
+
+.right-footer {
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  color: #536471;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.right-footer a {
+  color: #536471;
+  text-decoration: none;
+  margin-right: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.right-footer a:hover {
+  text-decoration: underline;
+}
+
+.right-footer-copy {
+  margin-top: 0.25rem;
+}
+
+/* ===== MOBILE ONLY UI (hidden by default) ===== */
+
+.mobile-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  height: 3.5rem;
+  background-color: #ffffff;
+  border-top: 1px solid #eff3f4;
+
+  display: none;              /* shown in mobile media query */
+  z-index: 20;
+}
+
+.mobile-nav-inner {
+  max-width: 600px;
+  margin: 0 auto;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.mobile-nav-btn {
+  border: none;
+  background: transparent;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 999px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+.mobile-nav-btn .material-icons,
+.mobile-nav-btn svg {
+  font-size: 1.9rem;
+  width: 1.7rem;
+  height: 1.7rem;
+  color: #536471;
+  fill: #536471;
+}
+
+.mobile-nav-btn--active .material-icons,
+.mobile-nav-btn--active svg {
+  color: #0f1419;
+  fill: #0f1419;
+}
+
+.mobile-nav-btn:hover {
+  background-color: rgba(15, 20, 25, 0.08);
+}
+
+/* Floating tweet/add button */
+.mobile-fab {
+  position: fixed;
+  right: 1rem;
+  bottom: 4.25rem;  /* sits above bottom nav */
+
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 999px;
+  border: none;
+
+  background-color: #1d9bf0;
+  color: #ffffff;
+
+  display: none; /* shown in mobile media query */
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  z-index: 21;
+
+  box-shadow: 0 4px 12px rgba(15, 20, 25, 0.3);
+}
+
+.mobile-fab .material-icons,
+.mobile-fab svg {
+  font-size: 1.9rem;
+  width: 1.7rem;
+  height: 1.7rem;
+  color: #ffffff;
+  fill: #ffffff;
 }

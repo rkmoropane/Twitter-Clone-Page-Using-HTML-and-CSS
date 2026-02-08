@@ -1,0 +1,131 @@
+/* ========== RESPONSIVE (collapse labels like X) ========== */
+
+/* 1) Slightly narrower screens (tablets / laptops) */
+/* collapse sidebar labels, keep sidebar + feed widths aligned */
+@media (max-width: 70rem) {
+  body {
+    justify-content: flex-start;
+  }
+
+  /* Sidebar shrinks, but still has reasonable width */
+  .banner-wrap {
+    width: auto;               /* override fixed 22.5rem */
+    flex: 0 0 16%;
+    min-width: 4.5rem;
+    max-width: 5.5rem;
+    padding: 0.75rem 0.5rem;
+    align-items: center;
+  }
+
+  .sidebar {
+    margin-left: 0;
+    align-items: center;
+  }
+
+  .nav-items {
+    align-items: center;
+  }
+
+  .sidebar-menu {
+    width: 3.25rem;
+    height: 3.25rem;
+    padding: 0.75rem;
+    justify-content: center;
+    font-size: 0;  /* hide labels, show icons only */
+  }
+
+  .post-btn {
+    width: 3.75rem;
+    height: 3.75rem;
+    font-size: 0;
+    border-radius: 999px;
+    padding: 0;
+  }
+
+  .post-btn::after {
+    content: "+";
+    color: #ffffff;
+    font-size: 1.7rem;
+    line-height: 1;
+  }
+
+  .profile-text,
+  .profile-details,
+  .profile-more {
+    display: none;
+  }
+
+  .profile-avatar,
+  .profile img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .profile-card {
+    justify-content: center;
+    padding: 0.5rem;
+  }
+
+  /* Feed takes the remaining width so it lines up with sidebar */
+  .main-container {
+    flex: 0 0 84%;
+    max-width: 84%;
+  }
+
+  /* Hide right column to give sidebar + feed breathing room */
+  .right-column {
+    display: none;
+  }
+
+  .tweet-composer {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .tweet-input {
+    font-size: 1rem;
+  }
+}
+
+
+/* 2) Very small screens (old Android phones, ~360px wide) */
+/* Only show the feed + mobile nav + add button */
+@media (max-width: 48rem) {
+  /* Only the middle feed remains */
+  .banner-wrap {
+    display: none;
+  }
+
+  .right-column {
+    display: none;
+  }
+
+  .main-container {
+    flex: 1 1 100%;
+    max-width: 100%;
+    border-right: none;
+    padding-bottom: 4.25rem;   /* space so tweets aren't hidden by bottom nav */
+  }
+
+  /* ensure home header sticks to top */
+  .main-header {
+    top: 0;
+  }
+
+  /* turn on mobile nav + FAB */
+  .mobile-nav {
+    display: block;
+  }
+
+  .mobile-fab {
+    display: flex;
+  }
+}
+
+
+/* 3) Ultra-wide screens (4K desktops, etc.) */
+/* Keep layout nicely centered and not stretched */
+@media (min-width: 120rem) {
+  body {
+    padding-inline: 4rem;  /* a bit more whitespace on ultra-wide */
+  }
+}
