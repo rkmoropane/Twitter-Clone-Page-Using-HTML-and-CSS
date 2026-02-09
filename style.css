@@ -950,30 +950,36 @@ body {
 }
 
 
-/* ===== RIGHT FOOTER LINKS ===== */
+/* ===== RIGHT FOOTER LINKS (X-style) ===== */
 
 .right-footer {
   margin-top: 0.75rem;
-  font-size: 0.75rem;
-  color: #536471;
+  padding: 0 1rem 0.5rem;  /* match card padding */
   display: flex;
   flex-wrap: wrap;
+  column-gap: 0.6rem;      /* horizontal spacing between links */
+  row-gap: 0.25rem;        /* vertical spacing when they wrap */
+  font-size: 0.75rem;      /* small, subtle text */
+  line-height: 1.2;
+  color: #536471;          /* X grey */
 }
 
 .right-footer a {
-  color: #536471;
+  color: inherit;          /* same grey as the container */
   text-decoration: none;
-  margin-right: 0.5rem;
-  margin-bottom: 0.25rem;
+  white-space: nowrap;     /* keep each label on one line */
 }
 
 .right-footer a:hover {
   text-decoration: underline;
 }
 
+/* copyright line on its own row, like X */
 .right-footer-copy {
+  flex-basis: 100%;        /* force to full width */
   margin-top: 0.25rem;
 }
+
 
 /* ===== MOBILE ONLY UI (hidden by default) ===== */
 
