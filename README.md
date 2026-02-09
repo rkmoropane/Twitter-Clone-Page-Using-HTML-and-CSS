@@ -86,10 +86,10 @@ I built my own portfolio of practical experience.
 
 ## Our Final Stand-up
 
-- Mobile optimize
+- **Mobile optimize**
  + Add mobile optimize that only shows the tweet section on mobiles (Home - title container stays fixed) 
  + Add a fixed footer for mobile that only shows icons 
  + Ensures they are no breakages on mobile(icons, sizes etc) 
  + make sure we use the add button(for tweeting - posting) in mobile
- + Added the Explore page on the sidemenu 'Explore', click on it, it takes you to the Explore page.
- + Added the logout button below the profile on the sidebar footer. Click on it, it takes you to the Login page.
+ + Added the **Explore** page on the sidemenu 'Explore', click on it, it takes you to the **Explore** page.
+ + Added the logout button below the profile on the sidebar footer. Click on it, it takes you to the **Login** page.
