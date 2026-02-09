@@ -1,0 +1,136 @@
+/* ========== EXPLORE PAGE (no JS) ========== */
+.explore-body {
+  background-color: #ffffff;
+  color: #0f1419;
+  min-height: 100vh;
+  font-family: "Roboto", "Open Sans", Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+.explore-page {
+  width: 100%;
+  max-width: 37.5rem;
+  border-left: 1px solid #eff3f4;
+  border-right: 1px solid #eff3f4;
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+
+.explore-header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background-color: #ffffff;
+  border-bottom: 1px solid #eff3f4;
+  padding: 0.5rem 1rem 0.25rem;
+}
+
+.explore-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+}
+
+/* search bar */
+.explore-search {
+  display: flex;
+  align-items: center;
+  background-color: #eff3f4;
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  margin-bottom: 0.65rem;
+}
+
+.explore-search .material-icons {
+  font-size: 1.2rem;
+  color: #536471;
+  margin-right: 0.5rem;
+}
+
+.explore-search-input {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 0.95rem;
+  width: 100%;
+}
+
+/* tabs */
+.explore-tabs {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.explore-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.explore-tab {
+  border: none;
+  background: transparent;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #536471;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+}
+
+.explore-tab-active {
+  color: #0f1419;
+  font-weight: 700;
+  border-bottom-color: #1d9bf0;
+}
+
+/* trends list */
+.explore-section {
+  padding: 0.5rem 0;
+}
+
+.explore-trend {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #eff3f4;
+  cursor: pointer;
+}
+
+.explore-trend:hover {
+  background-color: #f7f9f9;
+}
+
+.explore-trend-meta {
+  font-size: 0.8rem;
+  color: #536471;
+  margin-bottom: 0.15rem;
+}
+
+.explore-trend-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 0.1rem;
+}
+
+.explore-trend-count {
+  font-size: 0.8rem;
+  color: #536471;
+}
+
+/* Small screens: page uses full width */
+@media (max-width: 48rem) {
+  .explore-page {
+    max-width: 100%;
+    border-left: none;
+    border-right: none;
+  }
+
+  .explore-header {
+    padding-inline: 0.75rem;
+  }
+
+  .explore-trend {
+    padding-inline: 0.75rem;
+  }
+}

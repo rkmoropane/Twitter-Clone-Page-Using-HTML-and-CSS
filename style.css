@@ -124,10 +124,43 @@ body {
     display: block;
 }
 
+/* Ensure sidebar-menu works inside <a> wrapper */
+.sidebar-menu-explore {
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  color: #0f1419;
+  text-decoration: none;
+  width: fit-content;
+}
+
+/* Ensure sidebar-menu works inside <a> wrapper */
+.sidebar-menu-explore .sidebar-menu {
+  font-weight: 400;
+  color: #0f1419;
+  text-decoration: none;
+  width: fit-content;
+}
+
 /* Optional: make "Home" look active */
-.nav-items .sidebar-menu:first-child {
+.nav-items .first-menu {
     font-weight: 700;
 }
+
+
+/* Hover effect same as others */
+.sidebar-menu-explore:hover {
+  background: rgba(15, 20, 25, 0.08);
+}
+
+/* Icon inside Explore */
+.sidebar-menu-explore svg {
+  width: 1.75rem;
+  height: 1.75rem;
+  fill: #0f1419;
+  flex-shrink: 0;
+}
+
 
 /* === POST BUTTON (X accurate, no transition) === */
 .div-btn {
@@ -219,6 +252,24 @@ body {
 .profile-handle {
   font-size: 0.85rem;
   color: #536471;
+}
+
+/* Login / Logout link inside sidebar - New custom feature: Cursor*/
+.logout-link {
+  display: block;
+  margin-top: 0.75rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0f1419;
+  background-color: #eff3f4;
+  text-align: center;
+}
+
+.logout-link:hover {
+  background-color: #d7dbdc;
 }
 
 /* ================ Main Column =========== */
@@ -879,6 +930,25 @@ body {
   padding: 0.3rem 0.9rem;
   cursor: pointer;
 }
+
+.follow-card-footer {
+  padding: 0.75rem 1rem 0.9rem 1rem;
+}
+
+.follow-show-more {
+  border: none;
+  background-color: transparent;
+  color: #1d9bf0;
+  font-size: 0.9rem;
+  font-weight: 400;
+  padding: 0;
+  cursor: pointer;
+}
+
+.follow-show-more:hover {
+  text-decoration: underline;
+}
+
 
 /* ===== RIGHT FOOTER LINKS ===== */
 
