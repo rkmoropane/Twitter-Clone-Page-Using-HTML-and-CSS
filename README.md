@@ -91,3 +91,7 @@ I built my own portfolio of practical experience.
  + Add a fixed footer for mobile that only shows icons 
  + Ensures they are no breakages on mobile(icons, sizes etc) 
  + make sure we use the add button(for tweeting - posting) in mobile
+
+ ## Certificate:
+ ![Project Simulation Certificate](Twitter-clone-page.png)
+ 
